@@ -11,7 +11,7 @@ func DefaultConfig() *Config {
 	}
 }
 
-func (c *Config) ChangePrompt(prompt string) {
+func (cfg *Config) ChangePrompt(prompt string) {
 	// Update prompt with a trailing space to separate input from prompt
-	c.Prompt = prompt + " "
+	cfg.Prompt = prompt + " "
 }
