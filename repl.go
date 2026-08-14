@@ -2,17 +2,15 @@ package repl
 
 import (
 	"fmt"
-
-	typesREPL "github.com/hendrik-ro/replGo/module/types"
 )
 
-func newREPL(cfg typesREPL.Config) typesREPL.REPL {
-	return typesREPL.REPL{
+func newREPL(cfg Config) *REPL {
+	return &REPL{
 		Config: cfg,
 	}
 }
 
-func (r *typesREPL.REPL) Run() {
+func (r *REPL) Run() {
 	for {
 		fmt.Println("> ")
 		var input string
