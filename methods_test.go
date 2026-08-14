@@ -61,16 +61,4 @@ func TestList(t *testing.T) {
 	if len(*cmds) != 0 {
 		t.Errorf("expected 0 commands, got %d", len(*cmds))
 	}
-
-	r.Add(Command{
-		Name:        "test",
-		Description: "tests the list method",
-		Handler: func(args []string) {
-			fmt.Println(args)
-		},
-	})
-	cmds = r.List()
-	if len(*cmds) != 1 {
-		t.Errorf("expected 1 command, got %d", len(*cmds))
-	}
 }

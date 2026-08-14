@@ -1,15 +1,26 @@
 package repl
 
-type Config struct {
-	Commands []Command
+type REPL struct {
+	Config *Config
 }
 
-type REPL struct {
-	Config Config
+type Config struct {
+	Commands []Command
+	History  *History
 }
 
 type Command struct {
 	Name        string
 	Description string
 	Handler     func([]string)
+}
+
+type History struct {
+	MaxSize int
+	Entries *[]HistoryEntry
+}
+
+type HistoryEntry struct {
+	Command Command
+	Args    []string
 }
