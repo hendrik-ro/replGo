@@ -8,7 +8,7 @@ import (
 var numDefaultCommands = len(DefaultCommands)
 
 func TestAdd(t *testing.T) {
-	r := newREPL()
+	r := NewREPL()
 
 	cmd := Command{
 		Name:        "test",
@@ -35,7 +35,7 @@ func TestAdd(t *testing.T) {
 }
 
 func TestRemove(t *testing.T) {
-	r := newREPL()
+	r := NewREPL()
 
 	cmd := Command{
 		Name:        "test",
@@ -58,7 +58,7 @@ func TestRemove(t *testing.T) {
 }
 
 func TestList(t *testing.T) {
-	r := newREPL()
+	r := NewREPL()
 	cmds := r.List()
 	if len(*cmds) != numDefaultCommands {
 		t.Errorf("expected %d commands, got %d", numDefaultCommands, len(*cmds))
