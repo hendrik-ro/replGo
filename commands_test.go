@@ -2,7 +2,7 @@ package repl
 
 import "testing"
 
-func TestHelpCommand(t *testing.T) {
+func TestDefaultCommands(t *testing.T) {
 	r := newREPL()
 	if len(r.Config.Commands) != 2 {
 		t.Errorf("expected 2 commands, got %d", len(r.Config.Commands))

@@ -7,6 +7,7 @@ type REPL struct {
 type Config struct {
 	Commands []Command
 	History  *History
+	Prompt   string
 }
 
 type Command struct {

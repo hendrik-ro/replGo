@@ -7,23 +7,16 @@ import (
 
 func newREPL() *REPL {
 	// Initialize the REPL with a default config
-	cfg := Config{
-		History: &History{
-			MaxSize: 100,
-			Entries: &[]HistoryEntry{},
-		},
-	}
-	cmds := DefaultCommands
-	cfg.Commands = cmds
+	cfg := DefaultConfig()
 	return &REPL{
-		Config: &cfg,
+		Config: cfg,
 	}
 }
 
 func (r *REPL) Run() {
 	// Start the REPL loop
 	for {
-		fmt.Println("> ")
+		fmt.Print(r.Config.Prompt)
 		var input string
 		_, err := fmt.Scanln(&input)
 		if err != nil {
