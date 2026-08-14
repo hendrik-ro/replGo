@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-func newREPL(cfg Config) *REPL {
+func newREPL() *REPL {
 	return &REPL{
-		Config: cfg,
+		Config: Config{},
 	}
 }
 
