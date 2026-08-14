@@ -12,6 +12,7 @@ A custom made REPL package for Go to be used as a library or standalone CLI tool
 - Adding and removing custom commands
 - Returning command list
 - History tracking and listing
+- Prompt customization
 
 ## Roadmap
 - tbd
@@ -24,7 +25,7 @@ import "github.com/hendrik-ro/replGo"
 
 func main() {
 	// Initialize the REPL
-	repl := replGo.NewRepl("")
+	repl := replGo.NewRepl()
 	
 	// Add custom commands
 	repl.Add(replGo.Command{
