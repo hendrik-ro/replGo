@@ -13,6 +13,7 @@ A custom made REPL package for Go to be used as a library or standalone CLI tool
 - Returning command list
 - History tracking and listing
 - Prompt customization
+- Customization of system startup and shutdown messages
 
 ## Roadmap
 - tbd
