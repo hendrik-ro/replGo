@@ -12,7 +12,7 @@ type Config struct {
 type Command struct {
 	Name        string
 	Description string
-	Handler     func([]string)
+	Handler     func(Config, []string)
 }
 
 type History struct {

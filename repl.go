@@ -13,6 +13,8 @@ func newREPL() *REPL {
 			Entries: &[]HistoryEntry{},
 		},
 	}
+	cmds := DefaultCommands
+	cfg.Commands = cmds
 	return &REPL{
 		Config: &cfg,
 	}
@@ -36,7 +38,7 @@ func (r *REPL) Run() {
 
 		for _, c := range r.Config.Commands {
 			if c.Name == cmd {
-				c.Handler(args)
+				c.Handler(*r.Config, args)
 				lastCmd = c
 				break
 			}

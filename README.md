@@ -8,12 +8,13 @@ A CLI REPL package for Go.
 A custom made REPL package for Go to be used as a library or standalone CLI tool. It provides a simple REPL loop with customizable prompt and input handling.
 
 ## Features
+- Default commands: exit, help
 - Adding and removing custom commands
 - Returning command list
 - History tracking and listing
 
 ## Roadmap
-- Default commands: exit, help
+- tbd
 
 ## Usage
 To use the REPL package, import it into your Go project and create a new `Repl` instance with your desired prompt and input handler functions.
@@ -22,7 +23,10 @@ To use the REPL package, import it into your Go project and create a new `Repl` 
 import "github.com/hendrik-ro/replGo"
 
 func main() {
+	// Initialize the REPL
 	repl := replGo.NewRepl("")
+	
+	// Add custom commands
 	repl.Add(replGo.Command{
 		Name: "echo",
 		Description: "Echoes the input back to the user",
@@ -30,6 +34,8 @@ func main() {
 			fmt.Println(strings.Join(args, " "))
 		},
 	})
+
+	// Run the REPL
 	repl.Run()
 }
 ```

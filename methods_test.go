@@ -5,29 +5,31 @@ import (
 	"testing"
 )
 
+var numDefaultCommands = len(DefaultCommands)
+
 func TestAdd(t *testing.T) {
 	r := newREPL()
 
 	cmd := Command{
 		Name:        "test",
 		Description: "tests the add method",
-		Handler: func(args []string) {
+		Handler: func(cfg Config, args []string) {
 			fmt.Println(args)
 		},
 	}
 	r.Add(cmd)
 
-	if len(r.Config.Commands) != 1 {
-		t.Errorf("expected 1 command, got %d", len(r.Config.Commands))
+	if len(r.Config.Commands) != numDefaultCommands+1 {
+		t.Errorf("expected %d commands, got %d", numDefaultCommands+1, len(r.Config.Commands))
 	}
 
-	if r.Config.Commands[0].Name != "test" {
-		t.Errorf("expected command name 'test', got '%s'", r.Config.Commands[0].Name)
+	if r.Config.Commands[numDefaultCommands].Name != "test" {
+		t.Errorf("expected command name 'test', got '%s'", r.Config.Commands[numDefaultCommands].Name)
 	}
-	if r.Config.Commands[0].Description != "tests the add method" {
-		t.Errorf("expected command description 'tests the add method', got '%s'", r.Config.Commands[0].Description)
+	if r.Config.Commands[numDefaultCommands].Description != "tests the add method" {
+		t.Errorf("expected command description 'tests the add method', got '%s'", r.Config.Commands[numDefaultCommands].Description)
 	}
-	if r.Config.Commands[0].Handler == nil {
+	if r.Config.Commands[numDefaultCommands].Handler == nil {
 		t.Errorf("expected command handler, got nil")
 	}
 }
@@ -38,27 +40,27 @@ func TestRemove(t *testing.T) {
 	cmd := Command{
 		Name:        "test",
 		Description: "tests the remove method",
-		Handler: func(args []string) {
+		Handler: func(cfg Config, args []string) {
 			fmt.Println(args)
 		},
 	}
 	r.Add(cmd)
 
-	if len(r.Config.Commands) != 1 {
-		t.Errorf("expected 1 command, got %d", len(r.Config.Commands))
+	if len(r.Config.Commands) != numDefaultCommands+1 {
+		t.Errorf("expected %d commands, got %d", numDefaultCommands+1, len(r.Config.Commands))
 	}
 
 	r.Remove("test")
 
-	if len(r.Config.Commands) != 0 {
-		t.Errorf("expected 0 commands, got %d", len(r.Config.Commands))
+	if len(r.Config.Commands) != numDefaultCommands {
+		t.Errorf("expected %d commands, got %d", numDefaultCommands, len(r.Config.Commands))
 	}
 }
 
 func TestList(t *testing.T) {
 	r := newREPL()
 	cmds := r.List()
-	if len(*cmds) != 0 {
-		t.Errorf("expected 0 commands, got %d", len(*cmds))
+	if len(*cmds) != numDefaultCommands {
+		t.Errorf("expected %d commands, got %d", numDefaultCommands, len(*cmds))
 	}
 }
