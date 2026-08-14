@@ -29,14 +29,21 @@ func (r *REPL) Run() {
 			return
 		}
 
+		scanner.Scan()
 		input := scanner.Text()
-		inputCmd := strings.Split(input, " ")
+		inputCmd := strings.Fields(input)
 		if len(inputCmd) == 0 {
 			continue
 		}
 
 		cmd := strings.TrimSpace(strings.ToLower(inputCmd[0]))
-		args := inputCmd[1:]
+		args := func() []string {
+			var args []string
+			for _, arg := range inputCmd[1:] {
+				args = append(args, strings.TrimSpace(strings.ToLower(arg)))
+			}
+			return args
+		}()
 
 		var lastCmd = Command{}
 
