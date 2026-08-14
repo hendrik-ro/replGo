@@ -32,7 +32,7 @@ func (r *REPL) Run() {
 
 		for _, c := range r.Config.Commands {
 			if c.Name == cmd {
-				c.Handler(*r.Config, args)
+				c.Handler(r.Config, args)
 				lastCmd = c
 				break
 			}
