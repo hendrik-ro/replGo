@@ -10,9 +10,10 @@ A custom made REPL package for Go to be used as a library or standalone CLI tool
 ## Features
 - Adding and removing custom commands
 - Returning command list
+- History tracking and listing
 
 ## Roadmap
-- Cached command history
+- Default commands: exit, help
 
 ## Usage
 To use the REPL package, import it into your Go project and create a new `Repl` instance with your desired prompt and input handler functions.
