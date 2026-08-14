@@ -1,7 +1,9 @@
 package repl
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -16,15 +18,23 @@ func NewREPL() *REPL {
 func (r *REPL) Run() {
 	// Start the REPL loop
 	fmt.Println(r.Config.System.Startup)
+	scanner := bufio.NewScanner(os.Stdin)
+
 	for {
 		fmt.Print(r.Config.Prompt)
-		var input string
-		_, err := fmt.Scanln(&input)
-		if err != nil {
-			fmt.Println("failed to read input: ", err)
+		if !scanner.Scan() {
+			if err := scanner.Err(); err != nil {
+				fmt.Println("failed to read input:", err)
+			}
 			return
 		}
+
+		input := scanner.Text()
 		inputCmd := strings.Split(input, " ")
+		if len(inputCmd) == 0 {
+			continue
+		}
+
 		cmd := strings.TrimSpace(strings.ToLower(inputCmd[0]))
 		args := inputCmd[1:]
 
