@@ -13,7 +13,7 @@ func TestAdd(t *testing.T) {
 	cmd := Command{
 		Name:        "test",
 		Description: "tests the add method",
-		Handler: func(cfg Config, args []string) {
+		Handler: func(cfg *Config, args []string) {
 			fmt.Println(args)
 		},
 	}
@@ -40,7 +40,7 @@ func TestRemove(t *testing.T) {
 	cmd := Command{
 		Name:        "test",
 		Description: "tests the remove method",
-		Handler: func(cfg Config, args []string) {
+		Handler: func(cfg *Config, args []string) {
 			fmt.Println(args)
 		},
 	}

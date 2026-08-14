@@ -24,7 +24,7 @@ type Command struct {
 	Name        string
 	Description string
 	// Handler function for the command.
-	Handler func(Config, []string)
+	Handler func(*Config, []string)
 }
 
 type History struct {

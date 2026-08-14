@@ -9,7 +9,7 @@ var historyEntryCmd = HistoryEntry{
 	Command: Command{
 		Name:        "test",
 		Description: "test command",
-		Handler: func(cfg Config, args []string) {
+		Handler: func(cfg *Config, args []string) {
 			fmt.Println("test")
 		},
 	},
