@@ -24,6 +24,7 @@ var DefaultExit = Command{
 	Name:        "exit",
 	Description: "Exit the REPL",
 	Handler: func(cfg Config, args []string) {
+		fmt.Println(cfg.System.Shutdown)
 		os.Exit(0)
 	},
 }

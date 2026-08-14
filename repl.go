@@ -15,6 +15,7 @@ func newREPL() *REPL {
 
 func (r *REPL) Run() {
 	// Start the REPL loop
+	fmt.Println(r.Config.System.Startup)
 	for {
 		fmt.Print(r.Config.Prompt)
 		var input string
