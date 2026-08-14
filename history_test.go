@@ -17,7 +17,7 @@ var historyEntryCmd = HistoryEntry{
 }
 
 func TestHistory_Add(t *testing.T) {
-	r := newREPL()
+	r := NewREPL()
 	history := r.Config.History
 	history.MaxSize = 3
 
@@ -41,7 +41,7 @@ func TestHistory_Add(t *testing.T) {
 }
 
 func TestHistoryList(t *testing.T) {
-	r := newREPL()
+	r := NewREPL()
 	history := r.Config.History
 	entries := history.List()
 	if len(entries) != 0 {

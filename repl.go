@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func newREPL() *REPL {
+func NewREPL() *REPL {
 	// Initialize the REPL with a default config
 	cfg := DefaultConfig()
 	return &REPL{
